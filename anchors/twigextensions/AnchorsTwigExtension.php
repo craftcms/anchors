@@ -44,6 +44,9 @@ class AnchorsTwigExtension extends \Twig_Extension
 			// Remove HTML tags
 			$heading = preg_replace('/<(.*?)>/', '', $matches[3]);
 
+			// Remove parentheses
+			$heading = preg_replace('/\(.*?\)/', '', $heading);
+
 			// Remove inner-word punctuation
 			$heading = preg_replace('/[\'"‘’“”]/', '', $heading);
 
