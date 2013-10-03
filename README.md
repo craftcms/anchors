@@ -7,3 +7,7 @@ The anchor IDs are dynamically generated based on the heading text. The algorith
 By default, the `anchors` filter will only search for `<h1>`, `<h2>`, and `<h3>` tags. You can customize which tags it searches for by passing in a comma-separated list of tag names:
 
     {{ entry.body | anchors('h1,h2') }}
+
+## Installation
+
+To install Anchors, copy the anchors/ folder into craft/plugins/, and then go to Settings > Plugins and click the “Install” button next to “Anchors”.
