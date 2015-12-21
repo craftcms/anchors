@@ -44,6 +44,10 @@ $anchorName = craft()->anchors->generateAnchorName($headingText);
 
 ## Changelog
 
+### 1.2
+
+* Updated to take advantage of new Craft 2.5 plugin features.
+
 ### 1.1
 
 * Added AnchorsService, available globally from `craft()->anchors`, with two public methods:
