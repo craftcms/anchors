@@ -55,6 +55,10 @@ $anchorName = craft()->anchors->generateAnchorName($headingText);
 
 ## Changelog
 
+### 1.3.1
+
+* Fixed a bug where non-breaking spaces within headings could result in named anchors with “nbsp” in the name.
+
 ### 1.3
 
 * Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.

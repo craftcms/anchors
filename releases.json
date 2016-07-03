@@ -12,8 +12,16 @@
         "downloadUrl": "https://github.com/pixelandtonic/Anchors/archive/1.3.0.zip",
         "date": "2016-07-04T11:30:00+02:00",
         "notes": [
-        	"[Added] Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.",
+            "[Added] Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.",
             "[Improved] The plugin now creates separate named anchor elements that are placed before the headings, rather than adding an `id` attribute to the headings."
+        ]
+    },
+    {
+        "version": "1.3.1",
+        "downloadUrl": "https://github.com/pixelandtonic/Anchors/archive/1.3.1.zip",
+        "date": "2016-07-04T12:15:00+02:00",
+        "notes": [
+            "[Fixed] Fixed a bug where non-breaking spaces within headings could result in named anchors with “nbsp” in the name.",
         ]
     }
 ]
