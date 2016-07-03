@@ -81,6 +81,9 @@ class AnchorsService extends BaseApplicationComponent
 		// Remove inner-word punctuation
 		$heading = preg_replace('/[\'"‘’“”]/', '', $heading);
 
+		// Convert non-breaking spaces to spaces
+		$heading = str_replace(array('&nbsp;', ' '), ' ', $heading);
+
 		// Get the "words". This will search for any unicode "letters" or "numbers"
 		preg_match_all('/[\p{L}\p{N}]+/u', $heading, $words);
 		$words = ArrayHelper::filterEmptyStringsFromArray($words[0]);
@@ -116,11 +119,12 @@ class AnchorsService extends BaseApplicationComponent
 	private function _addAnchorToTagMatch($match)
 	{
 		$anchorName = $this->generateAnchorName($match[3]);
+		$heading = str_replace(array('&nbsp;', ' '), ' ', $match[3]);
 
 		return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>' .
 			'<'.$match[1].$match[2].'>' .
 			$match[3] .
-			' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t($this->anchorLinkTitleText, array('heading' => $match[3])).'">'.$this->anchorLinkText.'</a>' .
+			' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t($this->anchorLinkTitleText, array('heading' => $heading)).'">'.$this->anchorLinkText.'</a>' .
 			'</'.$match[1].'>';
 	}
 }
