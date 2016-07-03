@@ -80,7 +80,8 @@ class AnchorsService extends BaseApplicationComponent
 	{
 		$anchorName = $this->generateAnchorName($match[3]);
 
-		return '<'.$match[1].$match[2].' id='.$anchorName.'>' .
+		return '<a class="anchor-target" name="'.$anchorName.'"></a>' .
+			'<'.$match[1].$match[2].'>' .
 			$match[3] .
 			' <a class="anchor" href="#'.$anchorName.'" title="'.Craft::t('Direct link to {heading}', array('heading' => $match[3])).'">#</a>' .
 			'</'.$match[1].'>';
