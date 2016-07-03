@@ -9,8 +9,45 @@ namespace Craft;
  */
 class AnchorsService extends BaseApplicationComponent
 {
+	// Properties
+	// =========================================================================
+
+	/**
+	 * @var string|null The class name to give the named anchors
+	 */
+	protected $anchorClass;
+
+	/**
+	 * @var string|null The class name to give the anchor links
+	 */
+	protected $anchorLinkClass;
+
+	/**
+	 * @var string The visible text to give the anchor links
+	 */
+	protected $anchorLinkText;
+
+	/**
+	 * @var string The title/alt text to give the anchor links
+	 */
+	protected $anchorLinkTitleText;
+
 	// Public Methods
 	// =========================================================================
+
+	/**
+	 * Initializes the application component.
+	 *
+	 * @return void
+	 */
+	public function init()
+	{
+		$configService = craft()->config;
+		$this->anchorClass = $configService->get('anchorClass', 'anchors');
+		$this->anchorLinkClass = $configService->get('anchorLinkClass', 'anchors');
+		$this->anchorLinkText = $configService->get('anchorLinkText', 'anchors');
+		$this->anchorLinkTitleText = $configService->get('anchorLinkTitleText', 'anchors');
+	}
 
 	/**
 	 * Parses some HTML for headings and adds anchor links to them.
@@ -80,10 +117,10 @@ class AnchorsService extends BaseApplicationComponent
 	{
 		$anchorName = $this->generateAnchorName($match[3]);
 
-		return '<a class="anchor-target" name="'.$anchorName.'"></a>' .
+		return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>' .
 			'<'.$match[1].$match[2].'>' .
 			$match[3] .
-			' <a class="anchor" href="#'.$anchorName.'" title="'.Craft::t('Direct link to {heading}', array('heading' => $match[3])).'">#</a>' .
+			' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t($this->anchorLinkTitleText, array('heading' => $match[3])).'">'.$this->anchorLinkText.'</a>' .
 			'</'.$match[1].'>';
 	}
 }
