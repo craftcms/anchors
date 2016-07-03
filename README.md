@@ -22,6 +22,17 @@ By default, the `anchors` filter will only search for `<h1>`, `<h2>`, and `<h3>`
 {{ entry.body|anchors('h2,h3') }}
 ```
 
+## Configuration
+
+To configure Anchors, create a new “anchors.php” file within the craft/config folder, which returns an array.
+
+The following config settings are supported:
+
+- **anchorClass** – The class name that should be given to named anchors. (Default is `null`, meaning no class will be given.)
+- **anchorLinkClass** – The class name that should be given to anchor links. (Default is `'anchor'`.)
+- **anchorLinkText** – The visible text that anchor links should have. (Default is `'#'`'.)
+- **anchorLinkTitleText** – The title/alt text that anchor links should have. If `{heading}` is included, it will be replaced with the heading text the link is associated with. (Default is `'Direct link to {heading}'`.)
+
 ## Plugin API
 
 Other plugins can take advantage of Anchors using the provided API.
@@ -43,6 +54,11 @@ $anchorName = craft()->anchors->generateAnchorName($headingText);
 ```
 
 ## Changelog
+
+### 1.3
+
+* Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.
+* The plugin now creates separate named anchor elements that are placed before the headings, rather than adding an `id` attribute to the headings.
 
 ### 1.2
 
