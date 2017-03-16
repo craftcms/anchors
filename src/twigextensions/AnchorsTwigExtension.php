@@ -10,9 +10,8 @@
 
 namespace mikestreety\anchors\twigextensions;
 
-use mikestreety\anchors\Anchors;
-
 use Craft;
+use mikestreety\anchors\Anchors;
 
 /**
  * Twig can be extended in many ways; you can add extra tags, filters, tests, operators,
@@ -64,7 +63,8 @@ class AnchorsTwigExtension extends \Twig_Extension
      */
     public function anchorsFilter($html, $tags = 'h1,h2,h3')
     {
-        $html = craft()->anchors->parseHtml($html, $tags);
-        return TemplateHelper::getRaw($html);
+        $service = new \mikestreety\anchors\services\AnchorsService;
+        $html = $service->parseHtml($html, $tags);
+        return craft\helpers\Template::raw($html);
     }
 }

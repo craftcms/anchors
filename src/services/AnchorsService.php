@@ -63,7 +63,7 @@ class AnchorsService extends Component
      */
     public function init()
     {
-        $configService = craft()->config;
+        $configService = Craft::$app->config;
         $this->anchorClass = $configService->get('anchorClass', 'anchors');
         $this->anchorLinkClass = $configService->get('anchorLinkClass', 'anchors');
         $this->anchorLinkText = $configService->get('anchorLinkText', 'anchors');
@@ -80,7 +80,7 @@ class AnchorsService extends Component
      */
     public function parseHtml($html, $tags = 'h1,h2,h3')
     {
-        $tags = ArrayHelper::stringToArray($tags);
+        $tags = explode(',', $tags);
         return preg_replace_callback('/<('.implode('|', $tags).')([^>]*)>(.+?)<\/\1>/', array($this, '_addAnchorToTagMatch'), $html);
     }
 
@@ -107,7 +107,7 @@ class AnchorsService extends Component
 
         // Get the "words". This will search for any unicode "letters" or "numbers"
         preg_match_all('/[\p{L}\p{N}]+/u', $heading, $words);
-        $words = ArrayHelper::filterEmptyStringsFromArray($words[0]);
+        $words = craft\helpers\ArrayHelper::filterEmptyStringsFromArray($words[0]);
 
         // Turn them into camelCase
         foreach ($words as $i => $word)
@@ -145,7 +145,7 @@ class AnchorsService extends Component
         return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>' .
         '<'.$match[1].$match[2].'>' .
         $match[3] .
-        ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t($this->anchorLinkTitleText, array('heading' => $heading)).'">'.$this->anchorLinkText.'</a>' .
+        ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('site', $this->anchorLinkTitleText, array('heading' => $heading)).'">'.$this->anchorLinkText.'</a>' .
         '</'.$match[1].'>';
     }
 }
