@@ -1,0 +1,44 @@
+{
+    "name": "mikestreety/anchors",
+    "description": "Add linkable anchors to HTML headings in Craft.",
+    "type": "craft-plugin",
+    "version": "0.1.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "anchors"
+    ],
+    "support": {
+        "docs": "https://github.com/mikestreety/anchors/blob/master/README.md",
+        "issues": "https://github.com/mikestreety/anchors/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Street",
+            "homepage": "https://www.mikestreety.co.uk"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "~3.0.0-beta.1"
+    },
+    "autoload": {
+        "psr-4": {
+          "mikestreety\\anchors\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Anchors",
+        "handle": "anchors",
+        "schemaVersion": "0.1.0",
+        "hasSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/mikestreety/anchors/master/CHANGELOG.md",
+        "components": {
+            "anchorsService": "mikestreety\\anchors\\services\\AnchorsService"
+        },
+        "class": "mikestreety\\anchors\\Anchors"
+    }
+}
