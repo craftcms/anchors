@@ -32,7 +32,7 @@ use yii\base\Event;
  *
  * @author    Mike Street
  * @package   Anchors
- * @since     1.3.1
+ * @since     0.1.0
  *
  * @property  AnchorsServiceService $anchorsService
  */

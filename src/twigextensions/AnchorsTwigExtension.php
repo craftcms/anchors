@@ -23,7 +23,7 @@ use Craft;
  *
  * @author    Mike Street
  * @package   Anchors
- * @since     1.3.1
+ * @since     0.1.0
  */
 class AnchorsTwigExtension extends \Twig_Extension
 {
