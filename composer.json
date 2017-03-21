@@ -19,6 +19,14 @@
         {
             "name": "Mike Street",
             "homepage": "https://www.mikestreety.co.uk"
+        },
+        {
+            "name": "Brandon Kelly",
+            "homepage": "https://www.pixelandtonic.com"
+        },
+        {
+            "name": "Brad Bell",
+            "homepage": "https://www.pixelandtonic.com"
         }
     ],
     "require": {
