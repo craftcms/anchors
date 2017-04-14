@@ -1,0 +1,48 @@
+{
+  "name": "craftcms/anchors",
+  "description": "This plugin makes it possible to automatically add linkable anchors to HTML headings in Craft.",
+  "version": "2.0.0",
+  "type": "craft-plugin",
+  "keywords": [
+    "html",
+    "linkable",
+    "cms",
+    "craftcms",
+    "json",
+    "yii2"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pixel & Tonic",
+      "homepage": "https://pixelandtonic.com/"
+    }
+  ],
+  "support": {
+    "email": "support@craftcms.com",
+    "issues": "https://github.com/craftcms/anchors/issues?state=open",
+    "source": "https://github.com/craftcms/anchors",
+    "docs": "https://github.com/craftcms/anchors",
+    "rss": "https://github.com/craftcms/anchors/commits/master.atom"
+  },
+  "require": {
+    "craftcms/cms": "~3.0.0-beta.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "craft\\anchors\\": "src/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "extra": {
+    "name": "Anchors",
+    "handle": "anchors",
+    "changelogUrl": "https://raw.githubusercontent.com/craftcms/anchors/master/CHANGELOG.md",
+    "downloadUrl": "https://github.com/craftcms/anchors/archive/master.zip"
+  }
+}
