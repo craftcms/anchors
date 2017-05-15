@@ -38,19 +38,19 @@ The following config settings are supported:
 Other plugins can take advantage of Anchors using the provided API.
 
 ```php
-$parsedHtml = craft()->anchors->parseHtml($html);
+$parsedHtml = craft\anchors\Plugin::getInstance()->anchors->parseHtml($html);
 ```
 
 Like the `|anchors` templating filter, `parseHtml()` also allows you to specify which HTML tags should get anchors.
 
 ```php
-$parsedHtml = craft()->anchors->parseHtml($html, 'h2,h3');
+$parsedHtml = craft\anchors\Plugin::getInstance()->anchors->parseHtml($html, 'h2,h3');
 ```
 
 You can also pass some heading text directly into Anchors to get its generated anchor name:
 
 ```php
-$anchorName = craft()->anchors->generateAnchorName($headingText);
+$anchorName = craft\anchors\Plugin::getInstance()->anchors->generateAnchorName($headingText);
 ```
 
 ## Changelog
