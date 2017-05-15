@@ -3,10 +3,9 @@
 namespace craft\anchors;
 
 use Craft;
+use craft\anchors\models\Settings;
 use craft\anchors\services\Anchors;
-use craft\anchors\twigextensions\AnchorsTwigExtension;
-
-
+use craft\anchors\twigextensions\Extension;
 
 /**
  * Anchors plugin.
@@ -19,13 +18,6 @@ use craft\anchors\twigextensions\AnchorsTwigExtension;
  */
 class Plugin extends \craft\base\Plugin
 {
-
-    protected function createSettingsModel()
-    {
-        return new \craft\anchors\Settings();
-    }
-
-
     // Public Methods
     // =========================================================================
 
@@ -36,13 +28,20 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-        // Add in our Twig extensions
-        Craft::$app->view->twig->addExtension(new AnchorsTwigExtension());
+        // Add in our Twig extension
+        Craft::$app->getView()->getTwig()->addExtension(new Extension());
 
-        $this->setComponents(array('anchors' => Anchors::class) );
-
-
+        $this->setComponents(['anchors' => Anchors::class]);
     }
 
+    // Protected Methods
+    // =========================================================================
 
+    /**
+     * @inheritdoc
+     */
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
 }

@@ -6,15 +6,14 @@ Changelog
 ### Changed
 - Craft 3 compatibility.
 
-
-##1.3.1 - 2016-07-04
+## 1.3.1 - 2016-07-04
 
 ### Fixed
 -Fixed a bug where non-breaking spaces within headings could result in named anchors with “nbsp” in the name.
 
 
 ## 0.1.3 - 2016-07-03
-  
+
 ### Added
 -Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.
 -The plugin now creates separate named anchor elements that are placed before the headings, rather than adding an id attribute to the headings.
@@ -28,7 +27,7 @@ Changelog
 
 ## 0.1.1 - 2014-11-28
 
-### Added 
+### Added
  -AnchorsService, available globally from craft()->anchors, with two public methods:
   parseHtml() and  generateAnchorName()
 

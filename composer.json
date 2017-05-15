@@ -9,7 +9,8 @@
     "cms",
     "craftcms",
     "json",
-    "yii2"
+    "yii2",
+    "anchors"
   ],
   "license": "MIT",
   "authors": [
