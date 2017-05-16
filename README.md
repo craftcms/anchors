@@ -52,28 +52,3 @@ You can also pass some heading text directly into Anchors to get its generated a
 ```php
 $anchorName = craft\anchors\Plugin::getInstance()->anchors->generateAnchorName($headingText);
 ```
-
-## Changelog
-
-### 1.3.1
-
-* Fixed a bug where non-breaking spaces within headings could result in named anchors with “nbsp” in the name.
-
-### 1.3
-
-* Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.
-* The plugin now creates separate named anchor elements that are placed before the headings, rather than adding an `id` attribute to the headings.
-
-### 1.2
-
-* Updated to take advantage of new Craft 2.5 plugin features.
-
-### 1.1
-
-* Added AnchorsService, available globally from `craft()->anchors`, with two public methods:
-  * `parseHtml()`
-  * `generateAnchorName()`
-
-### 1.0
-
-* Initial release
