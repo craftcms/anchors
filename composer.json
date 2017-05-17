@@ -1,6 +1,6 @@
 {
   "name": "craftcms/anchors",
-  "description": "This plugin makes it possible to automatically add linkable anchors to HTML headings in Craft.",
+  "description": "Add anchor links to headings in your Craft CMS website content.",
   "version": "2.0.0",
   "type": "craft-plugin",
   "keywords": [
