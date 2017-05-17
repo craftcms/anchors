@@ -3,15 +3,14 @@
 namespace craft\anchors;
 
 use Craft;
-use craft\anchors\models\Settings;
-use craft\anchors\services\Anchors;
-use craft\anchors\twigextensions\Extension;
 
 /**
  * Anchors plugin.
  *
- * @method static getInstance()
- * @property Anchors $anchors
+ * @method static Plugin getInstance()
+ * @method Settings getSettings()
+ * @property Parser   $parser
+ * @property Settings $settings
  *
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since  2.0
@@ -29,9 +28,24 @@ class Plugin extends \craft\base\Plugin
         parent::init();
 
         // Add in our Twig extension
-        Craft::$app->getView()->getTwig()->addExtension(new Extension());
+        Craft::$app->getView()->getTwig()->addExtension(new TwigExtension());
 
-        $this->setComponents(['anchors' => Anchors::class]);
+        $settings = $this->getSettings();
+        $this->set('parser', [
+            'class' => Parser::class,
+            'anchorClass' => $settings->anchorClass,
+            'anchorLinkClass' => $settings->anchorLinkClass,
+            'anchorLinkText' => $settings->anchorLinkText,
+            'anchorLinkTitleText' => $settings->anchorLinkTitleText,
+        ]);
+    }
+
+    /**
+     * @return Parser
+     */
+    public function getParser(): Parser
+    {
+        return $this->get('parser');
     }
 
     // Protected Methods

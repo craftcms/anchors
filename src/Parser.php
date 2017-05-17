@@ -1,18 +1,17 @@
 <?php
-namespace craft\anchors\services;
+namespace craft\anchors;
 
 use Craft;
-use craft\anchors\Plugin;
 use craft\base\Component;
 use craft\helpers\ArrayHelper;
 
 /**
- * Anchors Service
+ * Class Parser
  *
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since  2.0
  */
-class Anchors extends Component
+class Parser extends Component
 {
     // Properties
     // =========================================================================
@@ -40,19 +39,6 @@ class Anchors extends Component
 
     // Public Methods
     // =========================================================================
-
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        parent::init();
-
-        $this->anchorClass = Plugin::getInstance()->getSettings()->anchorClass;
-        $this->anchorLinkClass = Plugin::getInstance()->getSettings()->anchorLinkClass;
-        $this->anchorLinkText = Plugin::getInstance()->getSettings()->anchorLinkText;
-        $this->anchorLinkTitleText = Plugin::getInstance()->getSettings()->anchorLinkTitleText;
-    }
 
     /**
      * Parses some HTML for headings and adds anchor links to them.

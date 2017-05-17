@@ -1,8 +1,7 @@
 <?php
-namespace craft\anchors\twigextensions;
+namespace craft\anchors;
 
 use craft\helpers\Template;
-use craft\anchors\Plugin;
 
 /**
  * Anchors Twig Extension
@@ -10,7 +9,7 @@ use craft\anchors\Plugin;
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since  2.0
  */
-class Extension extends \Twig_Extension
+class TwigExtension extends \Twig_Extension
 {
     /**
      * Returns the name of the extension.
@@ -44,7 +43,7 @@ class Extension extends \Twig_Extension
      */
     public function anchorsFilter($html, $tags = 'h1,h2,h3'): \Twig_Markup
     {
-        $html = Plugin::getInstance()->anchors->parseHtml($html, $tags);
+        $html = Plugin::getInstance()->getParser()->parseHtml($html, $tags);
         return Template::raw($html);
     }
 }

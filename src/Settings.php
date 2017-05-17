@@ -1,6 +1,6 @@
 <?php
 
-namespace craft\anchors\models;
+namespace craft\anchors;
 
 use craft\base\Model;
 
