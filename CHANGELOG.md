@@ -1,7 +1,7 @@
 Changelog
 =========
 
-## Unreleased
+## 2.0.0 - 2017-05-17
 
 ### Added
 - Added support for Craft 3.
