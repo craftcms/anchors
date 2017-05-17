@@ -4,6 +4,10 @@ This plugin makes it possible to automatically add linkable anchors to HTML head
 
 The anchors are named based on the heading text. The algorithm Anchors uses to convert the heading text to IDs is similar to Craft’s algorithm for automatically generating entry slugs.
 
+## Requirements
+
+This plugin requires Craft CMS 3.0.0-beta.1 or later.
+
 ## Installation
 
 To install the plugin, follow these instructions.
