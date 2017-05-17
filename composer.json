@@ -5,10 +5,8 @@
   "type": "craft-plugin",
   "keywords": [
     "html",
-    "linkable",
     "cms",
     "craftcms",
-    "json",
     "yii2",
     "anchors"
   ],
