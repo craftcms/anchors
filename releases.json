@@ -1,15 +1,15 @@
 [
     {
-        "version": "1.2",
-        "downloadUrl": "https://github.com/pixelandtonic/Anchors/archive/1.2.0.zip",
+        "version": "1.2.0",
+        "downloadUrl": "https://github.com/craftcms/anchors/archive/1.2.0.zip",
         "date": "2015-20-20T12:00:00-08:00",
         "notes": [
             "[Improved] Updated to take advantage of new Craft 2.5 plugin features."
         ]
     },
     {
-        "version": "1.3",
-        "downloadUrl": "https://github.com/pixelandtonic/Anchors/archive/1.3.0.zip",
+        "version": "1.3.0",
+        "downloadUrl": "https://github.com/craftcms/anchors/archive/1.3.0.zip",
         "date": "2016-07-04T11:30:00+02:00",
         "notes": [
             "[Added] Added ‘anchorClass’, ‘anchorLinkClass’, ‘anchorLinkText’, and ‘anchorLinkTitleText’ config settings.",
@@ -18,7 +18,7 @@
     },
     {
         "version": "1.3.1",
-        "downloadUrl": "https://github.com/pixelandtonic/Anchors/archive/1.3.1.zip",
+        "downloadUrl": "https://github.com/craftcms/anchors/archive/1.3.1.zip",
         "date": "2016-07-04T12:15:00+02:00",
         "notes": [
             "[Fixed] Fixed a bug where non-breaking spaces within headings could result in named anchors with “nbsp” in the name.",
