@@ -32,12 +32,6 @@
       "craft\\anchors\\": "src/"
     }
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
-    }
-  ],
   "extra": {
     "name": "Anchors",
     "handle": "anchors",
