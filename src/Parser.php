@@ -1,4 +1,5 @@
 <?php
+
 namespace craft\anchors;
 
 use Craft;
@@ -36,15 +37,14 @@ class Parser extends Component
      */
     public $anchorLinkTitleText = 'Direct link to {heading}';
 
-
     // Public Methods
     // =========================================================================
 
     /**
      * Parses some HTML for headings and adds anchor links to them.
      *
-     * @param string       $html The HTML to parse
-     * @param string|array $tags The tags to add anchor links to.
+     * @param string          $html The HTML to parse
+     * @param string|string[] $tags The tags to add anchor links to.
      *
      * @return string The parsed HTML.
      */
@@ -108,10 +108,10 @@ class Parser extends Component
         $anchorName = $this->generateAnchorName($match[3]);
         $heading = str_replace(['&nbsp;', ' '], ' ', $match[3]);
 
-        return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>' .
-            '<'.$match[1].$match[2].'>' .
-            $match[3] .
-            ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors',$this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>' .
+        return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>'.
+            '<'.$match[1].$match[2].'>'.
+            $match[3].
+            ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>'.
             '</'.$match[1].'>';
     }
 }
