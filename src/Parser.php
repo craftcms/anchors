@@ -5,6 +5,7 @@ namespace craft\anchors;
 use Craft;
 use craft\base\Component;
 use craft\helpers\ArrayHelper;
+use craft\helpers\StringHelper;
 
 /**
  * Class Parser
@@ -50,7 +51,10 @@ class Parser extends Component
      */
     public function parseHtml($html, $tags = 'h1,h2,h3'): string
     {
-        $tags = ArrayHelper::toArray($tags);
+        if (is_string($tags)) {
+            $tags = StringHelper::split($tags);
+        }
+
         return preg_replace_callback('/<('.implode('|', $tags).')([^>]*)>(.+?)<\/\1>/', [$this, '_addAnchorToTagMatch'], $html);
     }
 
