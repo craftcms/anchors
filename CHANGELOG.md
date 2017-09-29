@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 2.0.2 (WIP)
+
+### Changed
+- The plugin no longer forces Twig to be loaded on requests where it wasn’t needed.
+
 ## 2.0.1 - 2017-09-15
 
 ### Added

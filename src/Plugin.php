@@ -27,8 +27,10 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-        // Add in our Twig extension
-        Craft::$app->getView()->getTwig()->addExtension(new TwigExtension());
+        if (Craft::$app->getRequest()->getIsSiteRequest()) {
+            // Add in our Twig extension
+            Craft::$app->getView()->registerTwigExtension(new TwigExtension());
+        }
 
         $settings = $this->getSettings();
         $this->set('parser', [
