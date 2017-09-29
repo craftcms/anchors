@@ -110,7 +110,7 @@ class Parser extends Component
     private function _addAnchorToTagMatch($match): string
     {
         $anchorName = $this->generateAnchorName($match[3]);
-        $heading = str_replace(['&nbsp;', ' '], ' ', $match[3]);
+        $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
 
         return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>'.
             '<'.$match[1].$match[2].'>'.

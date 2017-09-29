@@ -6,6 +6,9 @@ Changelog
 ### Changed
 - The plugin no longer forces Twig to be loaded on requests where it wasn’t needed.
 
+### Fixed
+- Fixed a bug where HTML tags within headings were not getting stripped for the anchor link `title` text. ([#5](https://github.com/craftcms/anchors/issues/5))
+
 ## 2.0.1 - 2017-09-15
 
 ### Added
