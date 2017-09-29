@@ -74,7 +74,7 @@ class Parser extends Component
         $heading = preg_replace('/\(.*?\)/', '', $heading);
 
         // Remove inner-word punctuation
-        $heading = preg_replace('/[\'"‘’“”]/', '', $heading);
+        $heading = preg_replace('/[\'"‘’“”]/u', '', $heading);
 
         // Convert non-breaking spaces to spaces
         $heading = str_replace(['&nbsp;', ' '], ' ', $heading);
