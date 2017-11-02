@@ -26,7 +26,7 @@ class Settings extends Model
 
     /**
      * @var string $anchorLinkText The visible text that anchor links should have.
-     *                             (Default is '#''.)
+     *                             (Default is '#'.)
      */
     public $anchorLinkText = '#';
 
