@@ -119,7 +119,7 @@ class AnchorsService extends BaseApplicationComponent
 	private function _addAnchorToTagMatch($match)
 	{
 		$anchorName = $this->generateAnchorName($match[3]);
-		$heading = str_replace(array('&nbsp;', ' '), ' ', $match[3]);
+		$heading = strip_tags(str_replace(array('&nbsp;', ' '), ' ', $match[3]));
 
 		return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>' .
 			'<'.$match[1].$match[2].'>' .
