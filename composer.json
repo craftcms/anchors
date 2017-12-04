@@ -1,7 +1,7 @@
 {
   "name": "craftcms/anchors",
   "description": "Add anchor links to headings in your Craft CMS website content.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "type": "craft-plugin",
   "keywords": [
     "html",
@@ -25,7 +25,7 @@
     "rss": "https://github.com/craftcms/anchors/commits/v2.atom"
   },
   "require": {
-    "craftcms/cms": "~3.0.0-beta.27"
+    "craftcms/cms": "^3.0.0-beta.27"
   },
   "autoload": {
     "psr-4": {
