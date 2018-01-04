@@ -23,5 +23,13 @@
         "notes": [
             "[Fixed] Fixed a bug where non-breaking spaces within headings could result in named anchors with “nbsp” in the name.",
         ]
+    },
+    {
+        "version": "1.3.2",
+        "downloadUrl": "https://github.com/craftcms/anchors/archive/1.3.2.zip",
+        "date": "2018-01-03T12:15:00+02:00",
+        "notes": [
+            "[Fixed] Fixed a bug where the plugin could incorrectly parse header tags in some HTML snippets.",
+        ]
     }
 ]

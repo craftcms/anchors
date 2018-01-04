@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.3.2 - 2018-01-03
+
+### Fixed
+- Fixed a bug where the plugin could incorrectly parse header tags in some HTML snippets.
+
 ## 1.3.1 - 2016-07-03
 
 ### Fixed
