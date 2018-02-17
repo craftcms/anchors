@@ -1,4 +1,5 @@
 <?php
+
 namespace craft\anchors;
 
 use craft\helpers\Template;
@@ -7,7 +8,7 @@ use craft\helpers\Template;
  * Anchors Twig Extension
  *
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @since  2.0
+ * @since 2.0
  */
 class TwigExtension extends \Twig_Extension
 {
@@ -37,8 +38,7 @@ class TwigExtension extends \Twig_Extension
      * Parses a string to automatically add anchors to all H1-H3’s
      *
      * @param string $html The HTML to parse.
-     * @param mixed  $tags  The HTML tags to check for.
-     *
+     * @param mixed $tags The HTML tags to check for.
      * @return \Twig_Markup The parsed string.
      */
     public function anchorsFilter($html, $tags = 'h1,h2,h3'): \Twig_Markup

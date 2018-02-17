@@ -11,7 +11,7 @@ use craft\helpers\StringHelper;
  * Class Parser
  *
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @since  2.0
+ * @since 2.0
  */
 class Parser extends Component
 {
@@ -44,9 +44,8 @@ class Parser extends Component
     /**
      * Parses some HTML for headings and adds anchor links to them.
      *
-     * @param string          $html The HTML to parse
+     * @param string $html The HTML to parse
      * @param string|string[] $tags The tags to add anchor links to.
-     *
      * @return string The parsed HTML.
      */
     public function parseHtml($html, $tags = 'h1,h2,h3'): string
@@ -62,7 +61,6 @@ class Parser extends Component
      * Generates an anchor name based on a given heading.
      *
      * @param string $heading
-     *
      * @return string The generated anchor name.
      */
     public function generateAnchorName($heading): string
@@ -104,7 +102,6 @@ class Parser extends Component
      * Adds an anchor link to the given HTML tag match.
      *
      * @param array $match The thing to match.
-     *
      * @return string
      */
     private function _addAnchorToTagMatch($match): string

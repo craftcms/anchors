@@ -6,14 +6,13 @@ use Craft;
 
 /**
  * Anchors plugin.
- *
  * @method static Plugin getInstance()
  * @method Settings getSettings()
- * @property Parser   $parser
- * @property Settings $settings
  *
+ * @property Parser $parser
+ * @property Settings $settings
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @since  2.0
+ * @since 2.0
  */
 class Plugin extends \craft\base\Plugin
 {
