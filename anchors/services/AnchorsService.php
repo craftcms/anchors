@@ -122,7 +122,7 @@ class AnchorsService extends BaseApplicationComponent
 		$heading = strip_tags(str_replace(array('&nbsp;', ' '), ' ', $match[3]));
 
 		return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>' .
-			'<'.$match[1].$match[2].'>' .
+			'<'.$match[1].$match[2].' id="'.$anchorName.'">' .
 			$match[3] .
 			' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t($this->anchorLinkTitleText, array('heading' => $heading)).'">'.$this->anchorLinkText.'</a>' .
 			'</'.$match[1].'>';
