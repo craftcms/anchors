@@ -109,7 +109,7 @@ class Parser extends Component
         $anchorName = $this->generateAnchorName($match[3]);
         $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
 
-        return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' name="'.$anchorName.'"></a>'.
+        return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' id="'.$anchorName.'"></a>'.
             '<'.$match[1].$match[2].'>'.
             $match[3].
             ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>'.

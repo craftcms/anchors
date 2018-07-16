@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 2.1.0 - 2018-07-16
+
+### Changed
+- Anchors now use the `id` attribute instead of `name`. ([#4](https://github.com/craftcms/anchors/issues/4))
+
 ## 2.0.3 - 2017-12-04
 
 ### Changed
