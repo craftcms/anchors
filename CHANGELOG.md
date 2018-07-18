@@ -1,5 +1,4 @@
-Changelog
-=========
+# Release Notes for Anchors
 
 ## 2.1.0 - 2018-07-16
 
