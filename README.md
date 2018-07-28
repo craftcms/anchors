@@ -1,4 +1,4 @@
-# Anchors plugin for Craft
+# Anchors for Craft CMS
 
 This plugin makes it possible to automatically add linkable anchors to HTML headings in Craft.
 
