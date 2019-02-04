@@ -1,5 +1,10 @@
 # Release Notes for Anchors
 
+## 2.1.1 - 2019-02-04
+
+### Changed
+- The `|anchors` filter is now available to templates rendered on console requests. ([#8](https://github.com/craftcms/anchors/issues/8))
+
 ## 2.1.0 - 2018-07-16
 
 ### Changed

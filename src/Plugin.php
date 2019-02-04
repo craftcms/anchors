@@ -26,7 +26,7 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-        if (Craft::$app->getRequest()->getIsSiteRequest()) {
+        if (!Craft::$app->getRequest()->getIsCpRequest()) {
             // Add in our Twig extension
             Craft::$app->getView()->registerTwigExtension(new TwigExtension());
         }
