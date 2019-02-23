@@ -46,24 +46,35 @@ class Parser extends Component
      *
      * @param string $html The HTML to parse
      * @param string|string[] $tags The tags to add anchor links to.
+     * @param string|null The content language, used when converting non-ASCII characters to ASCII
      * @return string The parsed HTML.
      */
-    public function parseHtml($html, $tags = 'h1,h2,h3'): string
+    public function parseHtml($html, $tags = 'h1,h2,h3', string $language = null): string
     {
         if (is_string($tags)) {
             $tags = StringHelper::split($tags);
         }
 
-        return preg_replace_callback('/<('.implode('|', $tags).')([^>]*)>(.+?)<\/\1>/', [$this, '_addAnchorToTagMatch'], $html);
+        return preg_replace_callback('/<('.implode('|', $tags).')([^>]*)>(.+?)<\/\1>/', function(array $match) use ($language) {
+            $anchorName = $this->generateAnchorName($match[3], $language);
+            $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
+
+            return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' id="'.$anchorName.'"></a>'.
+                '<'.$match[1].$match[2].'>'.
+                $match[3].
+                ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>'.
+                '</'.$match[1].'>';
+        }, $html);
     }
 
     /**
      * Generates an anchor name based on a given heading.
      *
      * @param string $heading
+     * @param string|null $language
      * @return string The generated anchor name.
      */
-    public function generateAnchorName($heading): string
+    public function generateAnchorName(string $heading, string $language = null): string
     {
         // Remove HTML tags
         $heading = preg_replace('/<(.*?)>/', '', $heading);
@@ -92,27 +103,6 @@ class Parser extends Component
         }
 
         // Put them together as the anchor name
-        return implode('-', $words);
-    }
-
-    // Private Methods
-    // =========================================================================
-
-    /**
-     * Adds an anchor link to the given HTML tag match.
-     *
-     * @param array $match The thing to match.
-     * @return string
-     */
-    private function _addAnchorToTagMatch($match): string
-    {
-        $anchorName = $this->generateAnchorName($match[3]);
-        $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
-
-        return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' id="'.$anchorName.'"></a>'.
-            '<'.$match[1].$match[2].'>'.
-            $match[3].
-            ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>'.
-            '</'.$match[1].'>';
+        return StringHelper::toAscii(implode('-', $words), $language);
     }
 }

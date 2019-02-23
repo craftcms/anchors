@@ -1,5 +1,11 @@
 # Release Notes for Anchors
 
+## 2.2.0 - 2019-02-23
+
+### Changed
+- The `|anchors` filter now converts non-ASCII characters to ASCII when generating anchor names. ([#9](https://github.com/craftcms/anchors/issues/9))
+- The `|anchors` filter now has a `language` argument, which can be set to specify which language the ASCII character mappings should be pulled from. (The current site language is used by default.)
+
 ## 2.1.1 - 2019-02-04
 
 ### Changed

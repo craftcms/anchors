@@ -39,11 +39,12 @@ class TwigExtension extends \Twig_Extension
      *
      * @param string $html The HTML to parse.
      * @param mixed $tags The HTML tags to check for.
+     * @param string|null The content language, used when converting non-ASCII characters to ASCII
      * @return \Twig_Markup The parsed string.
      */
-    public function anchorsFilter($html, $tags = 'h1,h2,h3'): \Twig_Markup
+    public function anchorsFilter($html, $tags = 'h1,h2,h3', string $language = null): \Twig_Markup
     {
-        $html = Plugin::getInstance()->getParser()->parseHtml($html, $tags);
+        $html = Plugin::getInstance()->getParser()->parseHtml($html, $tags, $language);
         return Template::raw($html);
     }
 }

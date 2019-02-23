@@ -35,14 +35,22 @@ composer require craftcms/anchors
 
 To use Anchors in your templates, just pass some HTML into the `|anchors` filter.
 
-```jinja
+```twig
 {{ entry.body|anchors }}
 ```
 
 By default, the `anchors` filter will only search for `<h1>`, `<h2>`, and `<h3>` tags. You can customize which tags it searches for by passing in a comma-separated list of tag names.
 
-```jinja
+```twig
 {{ entry.body|anchors('h2,h3') }}
+```
+
+The `anchors` filter will convert any non-ASCII characters to ASCII, using the current site’s language’s ASCII character mappings by default.
+
+If you are displaying content in a different language than the current site, use the `language` argument to override which ASCII character mappings should be used:
+
+```twig
+{{ entry.body|anchors(language=entry.site.language) }}
 ```
 
 ## Configuration
