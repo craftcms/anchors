@@ -61,7 +61,7 @@ The following config settings are supported:
 
 - `anchorClass` – The class name that should be given to named anchors. (Default is `null`, meaning no class will be given.)
 - `anchorLinkClass` – The class name that should be given to anchor links. (Default is `'anchor'`.)
-- `anchorLinkText` – The visible text that anchor links should have. (Default is `'#'`'.)
+- `anchorLinkText` – The visible text that anchor links should have. (Default is `'#'`'. If `{heading}` is included, it will be replaced with the heading text the link is associated with.)
 - `anchorLinkTitleText` – The title/alt text that anchor links should have. If `{heading}` is included, it will be replaced with the heading text the link is associated with. (Default is `'Direct link to {heading}'`.)
 
 ## Plugin API

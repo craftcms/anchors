@@ -62,7 +62,7 @@ class Parser extends Component
             return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' id="'.$anchorName.'"></a>'.
                 '<'.$match[1].$match[2].'>'.
                 $match[3].
-                ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>'.
+                ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.Craft::t('anchors', $this->anchorLinkText, ['heading' => $heading]).'</a>'.
                 '</'.$match[1].'>';
         }, $html);
     }
