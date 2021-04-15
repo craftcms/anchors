@@ -1,5 +1,10 @@
 # Release Notes for Anchors
 
+## Unreleased
+
+### Changed
+- Anchors now requires Craft CMS 3.6 or later.
+
 ## 2.2.0 - 2019-02-23
 
 ### Changed

@@ -5,6 +5,7 @@ namespace craft\anchors;
 use Craft;
 use craft\base\Component;
 use craft\helpers\ArrayHelper;
+use craft\helpers\Html;
 use craft\helpers\StringHelper;
 
 /**
@@ -19,22 +20,22 @@ class Parser extends Component
     // =========================================================================
 
     /**
-     * @var string|null $anchorClass
+     * @var string|null
      */
     public $anchorClass;
 
     /**
-     * @var string $anchorLinkClass
+     * @var string|null
      */
     public $anchorLinkClass;
 
     /**
-     * @var string $anchorLinkText
+     * @var string
      */
     public $anchorLinkText = '#';
 
     /**
-     * @var string $anchorLinkTitleText
+     * @var string
      */
     public $anchorLinkTitleText = 'Direct link to {heading}';
 
@@ -49,21 +50,29 @@ class Parser extends Component
      * @param string|null The content language, used when converting non-ASCII characters to ASCII
      * @return string The parsed HTML.
      */
-    public function parseHtml($html, $tags = 'h1,h2,h3', string $language = null): string
+    public function parseHtml(string $html, $tags = 'h1,h2,h3', ?string $language = null): string
     {
         if (is_string($tags)) {
             $tags = StringHelper::split($tags);
         }
 
-        return preg_replace_callback('/<('.implode('|', $tags).')([^>]*)>(.+?)<\/\1>/', function(array $match) use ($language) {
+        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>(.+?)<\/\1>/', function(array $match) use ($language) {
             $anchorName = $this->generateAnchorName($match[3], $language);
             $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
+            $link = Html::tag('a', $this->anchorLinkText, [
+                'class' => $this->anchorLinkClass,
+                'title' => Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]),
+                'href' => "#$anchorName",
+            ]);
 
-            return '<a'.($this->anchorClass ? ' class="'.$this->anchorClass.'"' : '').' id="'.$anchorName.'"></a>'.
-                '<'.$match[1].$match[2].'>'.
-                $match[3].
-                ' <a'.($this->anchorLinkClass ? ' class="'.$this->anchorLinkClass.'"' : '').' href="#'.$anchorName.'" title="'.Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]).'">'.$this->anchorLinkText.'</a>'.
-                '</'.$match[1].'>';
+            return
+                Html::a('', null, [
+                    'class' => $this->anchorClass,
+                    'id' => $anchorName,
+                ]) .
+                "<$match[1]$match[2]>" .
+                "$match[3] $link" .
+                "</$match[1]>";
         }, $html);
     }
 

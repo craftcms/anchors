@@ -13,25 +13,25 @@ use craft\base\Model;
 class Settings extends Model
 {
     /**
-     * @var string|null $anchorClass The class name that should be given to named anchors.
+     * @var string|null The class name that should be given to named anchors.
      * (Default is null, meaning no class will be given.)
      */
     public $anchorClass;
 
     /**
-     * @var string $anchorLinkClass The class name that should be given to anchor links.
+     * @var string The class name that should be given to anchor links.
      * (Default is 'anchor'.)
      */
     public $anchorLinkClass = 'anchor';
 
     /**
-     * @var string $anchorLinkText The visible text that anchor links should have.
+     * @var string The visible text that anchor links should have.
      * (Default is '#'.)
      */
     public $anchorLinkText = '#';
 
     /**
-     * @var string $anchorLinkTitleText The title/alt text that anchor links should have.
+     * @var string The title/alt text that anchor links should have.
      * If {heading} is included, it will be replaced with the heading text
      * the link is associated with. (Default is 'Direct link to {heading}'.)
      */

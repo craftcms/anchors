@@ -2,7 +2,7 @@
 
 namespace craft\anchors;
 
-use craft\helpers\Template;
+use Twig\TwigFilter;
 
 /**
  * Anchors Twig Extension
@@ -30,7 +30,7 @@ class TwigExtension extends \Twig_Extension
     public function getFilters(): array
     {
         return [
-            new \Twig_Filter('anchors', [$this, 'anchorsFilter']),
+            new TwigFilter('anchors', [$this, 'anchorsFilter'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -38,13 +38,12 @@ class TwigExtension extends \Twig_Extension
      * Parses a string to automatically add anchors to all H1-H3’s
      *
      * @param string $html The HTML to parse.
-     * @param mixed $tags The HTML tags to check for.
+     * @param string|string[] $tags The HTML tags to check for.
      * @param string|null The content language, used when converting non-ASCII characters to ASCII
-     * @return \Twig_Markup The parsed string.
+     * @return string The parsed string.
      */
-    public function anchorsFilter($html, $tags = 'h1,h2,h3', string $language = null): \Twig_Markup
+    public function anchorsFilter(string $html, $tags = 'h1,h2,h3', ?string $language = null): string
     {
-        $html = Plugin::getInstance()->getParser()->parseHtml($html, $tags, $language);
-        return Template::raw($html);
+        return Plugin::getInstance()->getParser()->parseHtml($html, $tags, $language);
     }
 }
