@@ -1,6 +1,6 @@
 # Release Notes for Anchors
 
-## Unreleased
+## 2.3.0 - 2021-04-15
 
 ### Added
 - Added the `anchorLinkPosition` setting. ([#12](https://github.com/craftcms/anchors/issues/12))
