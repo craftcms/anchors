@@ -35,6 +35,7 @@ class Plugin extends \craft\base\Plugin
         $this->set('parser', [
             'class' => Parser::class,
             'anchorClass' => $settings->anchorClass,
+            'anchorLinkPosition' => $settings->anchorLinkPosition,
             'anchorLinkClass' => $settings->anchorLinkClass,
             'anchorLinkText' => $settings->anchorLinkText,
             'anchorLinkTitleText' => $settings->anchorLinkTitleText,

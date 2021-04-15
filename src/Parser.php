@@ -25,6 +25,12 @@ class Parser extends Component
     public $anchorClass;
 
     /**
+     * @var string Where the anchor link should be positioned within the heading, relative to the heading text (`before` or `after`)
+     * @since 2.3.0
+     */
+    public $anchorLinkPosition = Settings::POS_AFTER;
+
+    /**
      * @var string|null
      */
     public $anchorLinkClass;
@@ -71,7 +77,7 @@ class Parser extends Component
                     'id' => $anchorName,
                 ]) .
                 "<$match[1]$match[2]>" .
-                "$match[3] $link" .
+                ($this->anchorLinkPosition === Settings::POS_BEFORE ? "$link $match[3]" : "$match[3] $link") .
                 "</$match[1]>";
         }, $html);
     }

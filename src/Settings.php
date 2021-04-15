@@ -12,11 +12,22 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
+    /** @since 2.3.0 */
+    const POS_BEFORE = 'before';
+    /** @since 2.3.0 */
+    const POS_AFTER = 'after';
+
     /**
      * @var string|null The class name that should be given to named anchors.
      * (Default is null, meaning no class will be given.)
      */
     public $anchorClass;
+
+    /**
+     * @var string Where the anchor link should be positioned within the heading, relative to the heading text (`before` or `after`)
+     * @since 2.3.0
+     */
+    public $anchorLinkPosition = self::POS_AFTER;
 
     /**
      * @var string The class name that should be given to anchor links.

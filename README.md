@@ -60,6 +60,7 @@ To configure Anchors, create a new `anchors.php` file within the `config/` folde
 The following config settings are supported:
 
 - `anchorClass` – The class name that should be given to named anchors. (Default is `null`, meaning no class will be given.)
+- `anchorLinkPosition` – The position that anchor links should have within headings, relative to the heading text (`'before'` or `'after'`). (Default is `'after'`.)
 - `anchorLinkClass` – The class name that should be given to anchor links. (Default is `'anchor'`.)
 - `anchorLinkText` – The visible text that anchor links should have. (Default is `'#'`'.)
 - `anchorLinkTitleText` – The title/alt text that anchor links should have. If `{heading}` is included, it will be replaced with the heading text the link is associated with. (Default is `'Direct link to {heading}'`.)

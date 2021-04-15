@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Added
+- Added the `anchorLinkPosition` setting. ([#12](https://github.com/craftcms/anchors/issues/12))
+
 ### Changed
 - Anchors now requires Craft CMS 3.6 or later.
 
