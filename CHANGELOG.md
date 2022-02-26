@@ -1,5 +1,10 @@
 # Release Notes for Anchors
 
+## 2.3.1 - 2022-02-25
+
+### Fixed
+- Fixed an error that could occur if the `|anchors` filter was used on a `null` variable. ([#13](https://github.com/craftcms/anchors/issues/13))
+
 ## 2.3.0 - 2021-04-15
 
 ### Added
