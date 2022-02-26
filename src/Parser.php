@@ -53,7 +53,7 @@ class Parser extends Component
      *
      * @param string $html The HTML to parse
      * @param string|string[] $tags The tags to add anchor links to.
-     * @param string|null The content language, used when converting non-ASCII characters to ASCII
+     * @param string|null $language The content language, used when converting non-ASCII characters to ASCII
      * @return string The parsed HTML.
      */
     public function parseHtml(string $html, $tags = 'h1,h2,h3', ?string $language = null): string

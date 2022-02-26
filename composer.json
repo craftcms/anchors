@@ -27,6 +27,9 @@
   "require": {
     "craftcms/cms": "^3.6.0"
   },
+  "require-dev": {
+    "phpstan/phpstan": "^1.4"
+  },
   "autoload": {
     "psr-4": {
       "craft\\anchors\\": "src/"
@@ -36,5 +39,14 @@
     "name": "Anchors",
     "handle": "anchors",
     "documentationUrl": "https://github.com/craftcms/anchors/blob/v2/README.md"
+  },
+  "scripts": {
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
   }
 }

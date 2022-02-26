@@ -39,7 +39,7 @@ class TwigExtension extends \Twig_Extension
      *
      * @param string $html The HTML to parse.
      * @param string|string[] $tags The HTML tags to check for.
-     * @param string|null The content language, used when converting non-ASCII characters to ASCII
+     * @param string|null $language The content language, used when converting non-ASCII characters to ASCII
      * @return string The parsed string.
      */
     public function anchorsFilter(string $html, $tags = 'h1,h2,h3', ?string $language = null): string
