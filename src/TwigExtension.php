@@ -2,6 +2,7 @@
 
 namespace craft\anchors;
 
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 /**
@@ -10,7 +11,7 @@ use Twig\TwigFilter;
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since 2.0
  */
-class TwigExtension extends \Twig_Extension
+class TwigExtension extends AbstractExtension
 {
     /**
      * Returns the name of the extension.
