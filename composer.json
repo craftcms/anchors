@@ -31,7 +31,7 @@
     "craftcms/cms": "^4.0.0-alpha.1"
   },
   "require-dev": {
-    "phpstan/phpstan": "^1.4",
+    "craftcms/phpstan": "dev-main",
     "craftcms/rector": "dev-main"
   },
   "autoload": {
