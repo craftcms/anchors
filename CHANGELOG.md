@@ -1,5 +1,10 @@
 # Release Notes for Anchors
 
+## 3.0.0-beta.1 - 2022-03-04
+
+### Added
+- Added Craft 4 compatibility.
+
 ## 2.3.1 - 2022-02-25
 
 ### Fixed
