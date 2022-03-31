@@ -22,6 +22,12 @@ class Settings extends Model
      * (Default is null, meaning no class will be given.)
      */
     public $anchorClass;
+    
+     /**
+     * @var bool If true then it uses "a" tags if not then it creates only id attribute inside h tag.
+     * (Default is true.)
+     */
+    public $anchorLink = true;
 
     /**
      * @var string Where the anchor link should be positioned within the heading, relative to the heading text (`before` or `after`)
@@ -29,12 +35,12 @@ class Settings extends Model
      */
     public $anchorLinkPosition = self::POS_AFTER;
 
-    /**
+        /**
      * @var string The class name that should be given to anchor links.
      * (Default is 'anchor'.)
      */
     public $anchorLinkClass = 'anchor';
-
+    
     /**
      * @var string The visible text that anchor links should have.
      * (Default is '#'.)
