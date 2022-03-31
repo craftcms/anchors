@@ -23,6 +23,11 @@ class Parser extends Component
      * @var string|null
      */
     public $anchorClass;
+    
+     /**
+     * @var bool
+     */
+    public $anchorClass = true;
 
     /**
      * @var string Where the anchor link should be positioned within the heading, relative to the heading text (`before` or `after`)
@@ -70,15 +75,23 @@ class Parser extends Component
                 'title' => Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]),
                 'href' => "#$anchorName",
             ]);
-
-            return
-                Html::a('', null, [
+            
+            if($this->anchorLink === true){
+                return Html::a('', null, [
                     'class' => $this->anchorClass,
                     'id' => $anchorName,
-                ]) .
-                "<$match[1]$match[2]>" .
-                ($this->anchorLinkPosition === Settings::POS_BEFORE ? "$link $match[3]" : "$match[3] $link") .
+                ]).
+                    "<$match[1]$match[2]>".
+                    ($this->anchorLinkPosition === Settings::POS_BEFORE ? "$link $match[3]" : "$match[3] $link") .
                 "</$match[1]>";
+            }
+
+                return "<$match[1]$match[2] id=\"$anchorName\">".
+                    $match[3].
+                    "</$match[1]>";
+
+              
+
         }, $html);
     }
 
