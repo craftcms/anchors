@@ -13,9 +13,9 @@ use craft\base\Model;
 class Settings extends Model
 {
     /** @since 2.3.0 */
-    const POS_BEFORE = 'before';
+    public const POS_BEFORE = 'before';
     /** @since 2.3.0 */
-    const POS_AFTER = 'after';
+    public const POS_AFTER = 'after';
 
     /**
      * @var string|null The class name that should be given to named anchors.
