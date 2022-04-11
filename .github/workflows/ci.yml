@@ -6,10 +6,16 @@ on:
       - main
   pull_request:
 jobs:
-  call-workflow:
-    uses: craftcms/.github/.github/workflows/ci.yml@v1
-    secrets:
-      slack_webhook_url: ${{ secrets.SLACK_PLUGIN_WEBHOOK_URL }}
+  ecs:
+    uses: craftcms/.github/.github/workflows/ecs.yml@v1
+  phpstan:
+    uses: craftcms/.github/.github/workflows/phpstan.yml@v1
+  notify_slack:
+    needs: [ ecs, phpstan ]
+    uses: craftcms/.github/.github/workflows/notify_slack.yml@v1
     with:
-      run_ecs: true
-      run_phpstan: true
+      success: ${{ needs.ecs.result == 'success' && needs.phpstan.result == 'success' }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      slack_webhook_url: ${{ secrets.SLACK_PLUGIN_WEBHOOK_URL }}
+      slack_group_id: ${{ secrets.SLACK_GROUP_ID }}
