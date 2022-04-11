@@ -7,10 +7,13 @@ on:
   pull_request:
 jobs:
   ecs:
+    name: ECS
     uses: craftcms/.github/.github/workflows/ecs.yml@v1
   phpstan:
+    name: PHPStan
     uses: craftcms/.github/.github/workflows/phpstan.yml@v1
   notify-slack:
+    name: Notify Slack
     needs: [ ecs, phpstan ]
     uses: craftcms/.github/.github/workflows/notify-slack.yml@v1
     with:
