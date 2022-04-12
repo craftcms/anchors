@@ -50,6 +50,9 @@
     "fix-cs": "ecs check --ansi --fix"
   },
   "config": {
+    "platform": {
+      "php": "7.2.5"
+    },
     "allow-plugins": {
       "yiisoft/yii2-composer": true,
       "craftcms/plugin-installer": true
