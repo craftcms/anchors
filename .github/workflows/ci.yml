@@ -15,7 +15,7 @@ jobs:
   notify-slack:
     name: Notify Slack
     needs: [ ecs, phpstan ]
-    if: ${{ ! cancelled() }}
+    if: ${{ always() }}
     uses: craftcms/.github/.github/workflows/notify-slack.yml@v1
     with:
       success: ${{ needs.ecs.result == 'success' && needs.phpstan.result == 'success' }}
