@@ -14,8 +14,7 @@ use craft\helpers\StringHelper;
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since 2.0
  */
-class Parser extends Component
-{
+class Parser extends Component {
     // Properties
     // =========================================================================
 
