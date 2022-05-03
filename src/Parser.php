@@ -25,10 +25,10 @@ class Parser extends Component
     public $anchorClass;
 
     /**
-     * @var string Where the anchor link should be positioned within the heading, relative to the heading text (`before` or `after`)
+     * @var string|null Where the anchor link should be positioned within the heading, relative to the heading text (`before` or `after`)
      * @since 2.3.0
      */
-    public $anchorLinkPosition = Settings::POS_AFTER;
+    public $anchorLinkPosition;
 
     /**
      * @var string|null
@@ -36,14 +36,14 @@ class Parser extends Component
     public $anchorLinkClass;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $anchorLinkText = '#';
+    public $anchorLinkText;
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $anchorLinkTitleText = 'Direct link to {heading}';
+    public $anchorLinkTitleText;
 
     // Public Methods
     // =========================================================================

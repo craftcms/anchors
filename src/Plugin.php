@@ -16,8 +16,19 @@ use Craft;
  */
 class Plugin extends \craft\base\Plugin
 {
-    // Public Methods
-    // =========================================================================
+    /**
+     * @inheritdoc
+     */
+    public static function config(): array
+    {
+        return [
+            'components' => [
+                'parser' => [
+                    'class' => Parser::class,
+                ],
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -32,14 +43,12 @@ class Plugin extends \craft\base\Plugin
         }
 
         $settings = $this->getSettings();
-        $this->set('parser', [
-            'class' => Parser::class,
-            'anchorClass' => $settings->anchorClass,
-            'anchorLinkPosition' => $settings->anchorLinkPosition,
-            'anchorLinkClass' => $settings->anchorLinkClass,
-            'anchorLinkText' => $settings->anchorLinkText,
-            'anchorLinkTitleText' => $settings->anchorLinkTitleText,
-        ]);
+        $parser = $this->getParser();
+        $parser->anchorClass = $parser->anchorClass ?? $settings->anchorClass;
+        $parser->anchorLinkPosition = $parser->anchorLinkPosition ?? $settings->anchorLinkPosition;
+        $parser->anchorLinkClass = $parser->anchorLinkClass ?? $settings->anchorLinkClass;
+        $parser->anchorLinkText = $parser->anchorLinkText ?? $settings->anchorLinkText;
+        $parser->anchorLinkTitleText = $parser->anchorLinkTitleText ?? $settings->anchorLinkTitleText;
     }
 
     /**
@@ -49,9 +58,6 @@ class Plugin extends \craft\base\Plugin
     {
         return $this->get('parser');
     }
-
-    // Protected Methods
-    // =========================================================================
 
     /**
      * @inheritdoc
