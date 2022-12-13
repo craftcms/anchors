@@ -62,6 +62,9 @@ class Parser extends Component
             $tags = StringHelper::split($tags);
         }
 
+        // https://github.com/craftcms/anchors/issues/20 => remove new lines from headings
+        $html = preg_replace(['/\>\s+/', '/\s+<\//', '/\s/'], ['>', '</', ' '], $html);
+
         return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>(.+?)<\/\1>/', function(array $match) use ($language) {
             $anchorName = $this->generateAnchorName($match[3], $language);
             $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
