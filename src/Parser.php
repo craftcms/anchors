@@ -73,7 +73,7 @@ class Parser extends Component
             ]);
 
             return
-                Html::tag('span', null, [
+                Html::tag('span', '', [
                     'class' => $this->anchorClass,
                     'id' => $anchorName,
                 ]) .
