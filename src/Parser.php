@@ -68,11 +68,12 @@ class Parser extends Component
             $link = Html::tag('a', $this->anchorLinkText, [
                 'class' => $this->anchorLinkClass,
                 'title' => Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]),
+                'aria-label' => Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]),
                 'href' => "#$anchorName",
             ]);
 
             return
-                Html::a('', null, [
+                Html::tag('span', null, [
                     'class' => $this->anchorClass,
                     'id' => $anchorName,
                 ]) .
