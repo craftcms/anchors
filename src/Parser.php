@@ -62,9 +62,9 @@ class Parser extends Component
             $tags = StringHelper::split($tags);
         }
 
-        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>(.+?)<\/\1>/', function(array $match) use ($language) {
+        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>\s*([\w\W]+?)\s*<\/\1>/', function(array $match) use ($language) {
             $anchorName = $this->generateAnchorName($match[3], $language);
-            $heading = strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3]));
+            $heading = preg_replace('/\s+/', ' ', strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3])));
             $link = Html::tag('a', $this->anchorLinkText, [
                 'class' => $this->anchorLinkClass,
                 'title' => Craft::t('anchors', $this->anchorLinkTitleText, ['heading' => $heading]),

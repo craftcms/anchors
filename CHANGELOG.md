@@ -1,5 +1,8 @@
 # Release Notes for Anchors
 
+## Unreleased
+- Fixed a bug where headings that spanned multiple lines were ignored. ([#20](https://github.com/craftcms/anchors/issues/20))
+
 ## 2.3.1 - 2022-02-25
 
 ### Fixed
