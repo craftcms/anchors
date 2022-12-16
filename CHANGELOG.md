@@ -1,6 +1,6 @@
 # Release Notes for Anchors
 
-## Unreleased
+## 2.4.0 - 2022-12-16
 - Removed unnecessary tab spots. ([#21](https://github.com/craftcms/anchors/issues/21))
 - Fixed a bug where headings that spanned multiple lines were ignored. ([#20](https://github.com/craftcms/anchors/issues/20))
 
