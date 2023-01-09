@@ -37,11 +37,6 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-        if (!Craft::$app->getRequest()->getIsCpRequest()) {
-            // Add in our Twig extension
-            Craft::$app->getView()->registerTwigExtension(new TwigExtension());
-        }
-
         $settings = $this->getSettings();
         $parser = $this->getParser();
         $parser->anchorClass = $parser->anchorClass ?? $settings->anchorClass;
@@ -49,6 +44,11 @@ class Plugin extends \craft\base\Plugin
         $parser->anchorLinkClass = $parser->anchorLinkClass ?? $settings->anchorLinkClass;
         $parser->anchorLinkText = $parser->anchorLinkText ?? $settings->anchorLinkText;
         $parser->anchorLinkTitleText = $parser->anchorLinkTitleText ?? $settings->anchorLinkTitleText;
+
+        if (!Craft::$app->getRequest()->getIsCpRequest()) {
+            // Register the Twig extension
+            Craft::$app->getView()->registerTwigExtension(new TwigExtension());
+        }
     }
 
     /**
