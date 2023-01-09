@@ -1,5 +1,8 @@
 # Release Notes for Anchors
 
+## 3.2.0 - 2023-01-09
+- Added the `@anchors` GraphQL directive. ([#18](https://github.com/craftcms/anchors/issues/18))
+
 ## 3.1.0 - 2022-12-16
 - Removed unnecessary tab spots. ([#21](https://github.com/craftcms/anchors/issues/21))
 - Fixed a bug where headings that spanned multiple lines were ignored. ([#20](https://github.com/craftcms/anchors/issues/20))
