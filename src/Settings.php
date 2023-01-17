@@ -47,4 +47,13 @@ class Settings extends Model
      * the link is associated with. (Default is 'Direct link to {heading}'.)
      */
     public $anchorLinkTitleText = 'Direct link to {heading}';
+
+    /**
+     * @var bool Whether to render an additional tag above the heading
+     * and use it to scroll to when the anchor link is clicked.
+     * If set to 'false', anchor id is added to the heading itself.
+     * (Default is 'true'.)
+     * @since 3.3.0
+     */
+    public $useAdditionalTagToAnchorTo = true;
 }

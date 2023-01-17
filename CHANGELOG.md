@@ -1,5 +1,8 @@
 # Release Notes for Anchors
 
+## Unreleased
+- Added the `useAdditionalTagToAnchorTo` config option which allows you to opt out of a tag being added and used to link to, in favour of using heading's id. ([#21](https://github.com/craftcms/anchors/issues/21))
+
 ## 3.2.0 - 2023-01-09
 - Added the `@anchors` GraphQL directive. ([#18](https://github.com/craftcms/anchors/issues/18))
 
