@@ -40,10 +40,11 @@ class TwigExtension extends \Twig_Extension
      * @param mixed $html The HTML to parse.
      * @param string|string[] $tags The HTML tags to check for.
      * @param string|null $language The content language, used when converting non-ASCII characters to ASCII
+     * @param bool $lowercase Whether to always lowercase the entire anchor name
      * @return string The parsed string.
      */
-    public function anchorsFilter($html, $tags = 'h1,h2,h3', ?string $language = null): string
+    public function anchorsFilter($html, $tags = 'h1,h2,h3', ?string $language = null, bool $lowercase = false): string
     {
-        return Plugin::getInstance()->getParser()->parseHtml((string)$html, $tags, $language);
+        return Plugin::getInstance()->getParser()->parseHtml((string)$html, $tags, $language, $lowercase);
     }
 }

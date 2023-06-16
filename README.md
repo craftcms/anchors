@@ -53,6 +53,14 @@ If you are displaying content in a different language than the current site, use
 {{ entry.body|anchors(language=entry.site.language) }}
 ```
 
+By default, `anchors` filter will lowercase words that are all uppercase and lowercase the first letter in any other case.
+
+If you want the anchors to always be lowercase, you can use the `lowercase` argument:
+
+```twig
+{{ entry.body|anchors(lowercase=true) }}
+```
+
 ## Configuration
 
 To configure Anchors, create a new `anchors.php` file within the `config/` folder, which returns an array.
