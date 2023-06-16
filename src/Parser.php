@@ -92,6 +92,10 @@ class Parser extends Component
      */
     public function generateAnchorName(string $heading, string $language = null): string
     {
+        // decode html entities into chars
+        // see https://github.com/craftcms/anchors/issues/31 for details
+        $heading = htmlspecialchars_decode($heading, ENT_QUOTES);
+
         // Remove HTML tags
         $heading = preg_replace('/<(.*?)>/', '', $heading);
 
