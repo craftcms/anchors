@@ -54,16 +54,17 @@ class Parser extends Component
      * @param string $html The HTML to parse
      * @param string|string[] $tags The tags to add anchor links to.
      * @param string|null $language The content language, used when converting non-ASCII characters to ASCII
+     * @param bool $lowercase Whether to always lowercase the entire anchor name
      * @return string The parsed HTML.
      */
-    public function parseHtml(string $html, $tags = 'h1,h2,h3', ?string $language = null): string
+    public function parseHtml(string $html, $tags = 'h1,h2,h3', ?string $language = null, bool $lowercase = false): string
     {
         if (is_string($tags)) {
             $tags = StringHelper::split($tags);
         }
 
-        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>\s*([\w\W]+?)\s*<\/\1>/', function(array $match) use ($language) {
-            $anchorName = $this->generateAnchorName($match[3], $language);
+        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>\s*([\w\W]+?)\s*<\/\1>/', function(array $match) use ($language, $lowercase) {
+            $anchorName = $this->generateAnchorName($match[3], $language, $lowercase);
             $heading = preg_replace('/\s+/', ' ', strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3])));
             $link = Html::tag('a', $this->anchorLinkText, [
                 'class' => $this->anchorLinkClass,
@@ -88,10 +89,15 @@ class Parser extends Component
      *
      * @param string $heading
      * @param string|null $language
+     * @param bool $lowercase
      * @return string The generated anchor name.
      */
-    public function generateAnchorName(string $heading, string $language = null): string
+    public function generateAnchorName(string $heading, string $language = null, bool $lowercase = false): string
     {
+        // decode html entities into chars
+        // see https://github.com/craftcms/anchors/issues/31 for details
+        $heading = htmlspecialchars_decode($heading, ENT_QUOTES);
+
         // Remove HTML tags
         $heading = preg_replace('/<(.*?)>/', '', $heading);
 
@@ -110,11 +116,15 @@ class Parser extends Component
 
         // Turn them into camelCase
         foreach ($words as $i => $word) {
-            // Special case if the whole word is capitalized
-            if (strtoupper($word) === $word) {
+            if ($lowercase === true) {
                 $words[$i] = strtolower($word);
             } else {
-                $words[$i] = lcfirst($word);
+                // Special case if the whole word is capitalized
+                if (strtoupper($word) === $word) {
+                    $words[$i] = strtolower($word);
+                } else {
+                    $words[$i] = lcfirst($word);
+                }
             }
         }
 
