@@ -48,6 +48,7 @@ class Plugin extends \craft\base\Plugin
         $parser->anchorLinkClass = $parser->anchorLinkClass ?? $settings->anchorLinkClass;
         $parser->anchorLinkText = $parser->anchorLinkText ?? $settings->anchorLinkText;
         $parser->anchorLinkTitleText = $parser->anchorLinkTitleText ?? $settings->anchorLinkTitleText;
+        $parser->useAdditionalTagToAnchorTo = $parser->useAdditionalTagToAnchorTo ?? $settings->useAdditionalTagToAnchorTo;
 
         if (!Craft::$app->getRequest()->getIsCpRequest()) {
             // Register the Twig extension

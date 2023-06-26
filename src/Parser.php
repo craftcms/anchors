@@ -45,6 +45,12 @@ class Parser extends Component
      */
     public $anchorLinkTitleText;
 
+    /**
+     * @var bool|null
+     * @since 3.3.0
+     */
+    public $useAdditionalTagToAnchorTo;
+
     // Public Methods
     // =========================================================================
 
@@ -64,7 +70,20 @@ class Parser extends Component
         }
 
         return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>\s*([\w\W]+?)\s*<\/\1>/', function(array $match) use ($language, $lowercase) {
-            $anchorName = $this->generateAnchorName($match[3], $language, $lowercase);
+            $headingHasId = false;
+            // try to get id from the heading tag only if we're not supposed to use additional tag to anchor to
+            if (!$this->useAdditionalTagToAnchorTo && !empty($match[2])) {
+                $anchorName = $this->getIdFromHeading($match[2]);
+                if (!empty($anchorName)) {
+                    $headingHasId = true;
+                }
+            }
+
+            // if we still don't have the name for the anchor - generate it
+            if (empty($anchorName)) {
+                $anchorName = $this->generateAnchorName($match[3], $language, $lowercase);
+            }
+
             $heading = preg_replace('/\s+/', ' ', strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3])));
             $link = Html::tag('a', $this->anchorLinkText, [
                 'class' => $this->anchorLinkClass,
@@ -74,11 +93,12 @@ class Parser extends Component
             ]);
 
             return
-                Html::tag('span', '', [
-                    'class' => $this->anchorClass,
-                    'id' => $anchorName,
-                ]) .
-                "<$match[1]$match[2]>" .
+                ($this->useAdditionalTagToAnchorTo ?
+                    Html::tag('span', '', [
+                        'class' => $this->anchorClass,
+                        'id' => $anchorName,
+                    ]) : '') .
+                "<$match[1]$match[2]" . (!$this->useAdditionalTagToAnchorTo && !$headingHasId ? " id=\"$anchorName\"" : "") . ">" .
                 ($this->anchorLinkPosition === Settings::POS_BEFORE ? "$link $match[3]" : "$match[3] $link") .
                 "</$match[1]>";
         }, $html);
@@ -130,5 +150,23 @@ class Parser extends Component
 
         // Put them together as the anchor name
         return StringHelper::toAscii(implode('-', $words), $language);
+    }
+
+    /**
+     * Check if there's an id in the attributes. If there is one - return its value.
+     *
+     * @param $attributes
+     * @return string|null
+     */
+    public function getIdFromHeading($attributes): ?string
+    {
+        $id = null;
+        preg_match('/id="(\w+)"/', $attributes, $match);
+
+        if (isset($match[1]) && !empty($match[1])) {
+            $id = trim($match[1]);
+        }
+
+        return $id;
     }
 }

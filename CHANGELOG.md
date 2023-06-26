@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added the `useAdditionalTagToAnchorTo` config setting which allows you to opt out of a tag being added and used to link to, in favour of using heading's id. ([#21](https://github.com/craftcms/anchors/issues/21))
 - Fixed a couple of URL formatting bugs around case sensitivity and punctuation. ([#31](https://github.com/craftcms/anchors/issues/31))
 
 ## 3.2.0 - 2023-01-09

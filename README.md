@@ -72,6 +72,7 @@ The following config settings are supported:
 - `anchorLinkClass` – The class name that should be given to anchor links. (Default is `'anchor'`.)
 - `anchorLinkText` – The visible text that anchor links should have. (Default is `'#'`'.)
 - `anchorLinkTitleText` – The title/alt text that anchor links should have. If `{heading}` is included, it will be replaced with the heading text the link is associated with. (Default is `'Direct link to {heading}'`.)
+- `useAdditionalTagToAnchorTo` – Whether to render an additional tag above the heading and use it to scroll to when the anchor link is clicked. If set to `false`, anchor id is added to the heading. (Default is `true`.)
 
 ## Plugin API
 
