@@ -1,6 +1,6 @@
 # Release Notes for Anchors
 
-## Unreleased
+## 2.4.1 - 2023-07-02
 
 - Fixed a couple of URL formatting bugs around case sensitivity and punctuation. ([#31](https://github.com/craftcms/anchors/issues/31))
 
