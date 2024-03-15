@@ -6,7 +6,7 @@ The anchors are named based on the heading text. The algorithm Anchors uses to c
 
 ## Requirements
 
-This plugin requires Craft CMS 4.0 or later.
+This plugin requires Craft CMS 4.0.0+ or 5.0.0+.
 
 ## Installation
 
