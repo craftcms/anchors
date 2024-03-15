@@ -1,5 +1,9 @@
 # Release Notes for Anchors
 
+## 3.4.0 - 2024-03-15
+
+- Added Craft 5 compatibility.
+
 ## 3.3.0 - 2023-07-02
 
 - Added the `useAdditionalTagToAnchorTo` config setting which allows you to opt out of a tag being added and used to link to, in favour of using heading's id. ([#21](https://github.com/craftcms/anchors/issues/21))
