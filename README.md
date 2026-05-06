@@ -6,7 +6,7 @@ The anchors are named based on the heading text. The algorithm Anchors uses to c
 
 ## Requirements
 
-This plugin requires Craft CMS 4.0.0+ or 5.0.0+.
+This plugin requires Craft CMS 4.0.0+ or 5.0.0+ or 6.0.0-alpha.1+ with the `craftcms/yii2-adapter` package.
 
 ## Installation
 
@@ -63,7 +63,7 @@ If you want the anchors to always be lowercase, you can use the `lowercase` argu
 
 ## Configuration
 
-To configure Anchors, create a new `anchors.php` file within the `config/` folder, which returns an array.
+To configure Anchors, create a new `anchors.php` file within the `config/` folder (or `config/craft/` if you’re using Craft CMS v6), which returns an array.
 
 The following config settings are supported:
 
