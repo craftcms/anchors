@@ -63,7 +63,7 @@ If you want the anchors to always be lowercase, you can use the `lowercase` argu
 
 ## Configuration
 
-To configure Anchors, create a new `anchors.php` file within the `config/` folder, which returns an array.
+To configure Anchors, create a new `anchors.php` file within the `config/` folder (or `config/craft/` if you’re using Craft CMS v6), which returns an array.
 
 The following config settings are supported:
 
