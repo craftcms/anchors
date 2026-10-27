@@ -69,7 +69,11 @@ class Parser extends Component
             $tags = StringHelper::split($tags);
         }
 
-        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>\s*([\w\W]+?)\s*<\/\1>/', function(array $match) use ($language, $lowercase) {
+        // Seed with ids already present so generated ones don't collide with them
+        preg_match_all('/\sid="([^"]+)"/i', $html, $existingIds);
+        $usedIds = array_fill_keys($existingIds[1], true);
+
+        return preg_replace_callback('/<(' . implode('|', $tags) . ')([^>]*)>\s*([\w\W]+?)\s*<\/\1>/', function(array $match) use ($language, $lowercase, &$usedIds) {
             $headingHasId = false;
             // try to get id from the heading tag only if we're not supposed to use additional tag to anchor to
             if (!$this->useAdditionalTagToAnchorTo && !empty($match[2])) {
@@ -81,7 +85,10 @@ class Parser extends Component
 
             // if we still don't have the name for the anchor - generate it
             if (empty($anchorName)) {
-                $anchorName = $this->generateAnchorName($match[3], $language, $lowercase);
+                $anchorName = $this->uniqueAnchorName(
+                    $this->generateAnchorName($match[3], $language, $lowercase),
+                    $usedIds
+                );
             }
 
             $heading = preg_replace('/\s+/', ' ', strip_tags(str_replace(['&nbsp;', ' '], ' ', $match[3])));
@@ -161,12 +168,32 @@ class Parser extends Component
     public function getIdFromHeading($attributes): ?string
     {
         $id = null;
-        preg_match('/id="(\w+)"/', $attributes, $match);
+        preg_match('/\bid="([^"]+)"/', $attributes, $match);
 
         if (isset($match[1]) && !empty($match[1])) {
             $id = trim($match[1]);
         }
 
         return $id;
+    }
+
+    /**
+     * Ensures an anchor name is unique within the current parse by appending
+     * an incrementing suffix (`-2`, `-3`, …) if it has already been used.
+     *
+     * @param string $name The generated anchor name
+     * @param array $usedIds Anchor names already in use, indexed by name. The returned name is added to it.
+     * @return string The unique anchor name.
+    */
+    private function uniqueAnchorName(string $name, array &$usedIds): string
+    {
+        $unique = $name;
+        $i = 2;
+        while (isset($usedIds[$unique])) {
+            $unique = "$name-$i";
+            $i++;
+        }
+        $usedIds[$unique] = true;
+        return $unique;
     }
 }
