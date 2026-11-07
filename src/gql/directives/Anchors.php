@@ -7,7 +7,6 @@ use craft\gql\base\Directive;
 use craft\gql\GqlEntityRegistry;
 use GraphQL\Language\DirectiveLocation;
 use GraphQL\Type\Definition\Directive as GqlDirective;
-use GraphQL\Type\Definition\FieldArgument;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
@@ -28,18 +27,18 @@ class Anchors extends Directive
                 DirectiveLocation::FIELD,
             ],
             'args' => [
-                new FieldArgument([
+                [
                     'name' => 'tags',
                     'type' => Type::listOf(Type::string()),
                     'defaultValue' => ['h1', 'h2', 'h3'],
                     'description' => 'The tags to add anchor links to.',
-                ]),
-                new FieldArgument([
+                ],
+                [
                     'name' => 'language',
                     'type' => Type::string(),
                     'defaultValue' => null,
                     'description' => 'The content language, used when converting non-ASCII characters to ASCII.',
-                ]),
+                ],
             ],
             'description' => 'Adds anchor links to the value.',
         ]));

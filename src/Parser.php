@@ -112,7 +112,7 @@ class Parser extends Component
      * @param bool $lowercase
      * @return string The generated anchor name.
      */
-    public function generateAnchorName(string $heading, string $language = null, bool $lowercase = false): string
+    public function generateAnchorName(string $heading, ?string $language = null, bool $lowercase = false): string
     {
         // decode html entities into chars
         // see https://github.com/craftcms/anchors/issues/31 for details
