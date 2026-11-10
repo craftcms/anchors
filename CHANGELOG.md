@@ -1,6 +1,6 @@
 # Release Notes for Anchors
 
-## Unreleased
+## 3.5.0 - 2026-11-10
 
 - Added Craft 6 compatibility, when the `craftcms/yii2-adapter` package is installed.
 - Fixed an error that occurred when building GraphQL schemas on Craft 6.
